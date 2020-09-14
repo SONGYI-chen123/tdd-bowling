@@ -18,4 +18,13 @@ public class BowlingGameTest {
         int result = bowlingGame.scoring_rules(knockout_num);
         assertEquals(300,result);
     }
+
+    public void should_return_score_num_when_not_all_strike_nor_no_knockout(){
+        BowlingGame bowlingGame = new BowlingGame();
+
+        String knockout_num = "3,2,5,/,9,/,1,6,X,0,5,6,2,3,4,5,3,7,/,4";
+        int result = bowlingGame.scoring_rules(knockout_num);
+        assertEquals(99,result);
+    }
+
 }
