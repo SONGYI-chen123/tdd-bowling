@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BowlingGameTest {
+    @Test
     public void should_return_0_when_No_knockout(){
         BowlingGame bowlingGame = new BowlingGame();
 
@@ -11,14 +12,16 @@ public class BowlingGameTest {
         assertEquals(0,result);
     }
 
-    public void should_return_330_when_all_strike(){
+    @Test
+    public void should_return_300_when_all_strike(){
         BowlingGame bowlingGame = new BowlingGame();
 
-        String knockout_num = "X，X，X，X，X，X，X，X，X，X,10,10";
+        String knockout_num = "X,X,X,X,X,X,X,X,X,X,10,10";
         int result = bowlingGame.scoring_rules(knockout_num);
         assertEquals(300,result);
     }
 
+    @Test
     public void should_return_score_num_when_not_all_strike_nor_no_knockout(){
         BowlingGame bowlingGame = new BowlingGame();
 
