@@ -8,8 +8,8 @@ public class BowlingGameTest {
         BowlingGame bowlingGame = new BowlingGame();
 
         String knockout_num = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
-        int result = bowlingGame.scoring_rules(knockout_num);
-        assertEquals(0, result);
+        String result = bowlingGame.scoring_rules(knockout_num);
+        assertEquals("0", result);
     }
 
     @Test
@@ -17,8 +17,8 @@ public class BowlingGameTest {
         BowlingGame bowlingGame = new BowlingGame();
 
         String knockout_num = "X,X,X,X,X,X,X,X,X,X,10,10";
-        int result = bowlingGame.scoring_rules(knockout_num);
-        assertEquals(300, result);
+        String result = bowlingGame.scoring_rules(knockout_num);
+        assertEquals("300", result);
     }
 
     @Test
@@ -26,8 +26,8 @@ public class BowlingGameTest {
         BowlingGame bowlingGame = new BowlingGame();
 
         String knockout_num = "3,2,5,/,9,/,1,6,X,0,5,6,2,3,4,5,3,7,/,4";
-        int result = bowlingGame.scoring_rules(knockout_num);
-        assertEquals(99, result);
+        String result = bowlingGame.scoring_rules(knockout_num);
+        assertEquals("99", result);
     }
 
     @Test
@@ -35,8 +35,8 @@ public class BowlingGameTest {
         BowlingGame bowlingGame = new BowlingGame();
 
         String knockout_num = "0,9,0,9,0,9,0,9,0,9,0,9,0,9,0,9,0,9,0,9";
-        int result = bowlingGame.scoring_rules(knockout_num);
-        assertEquals(90, result);
+        String result = bowlingGame.scoring_rules(knockout_num);
+        assertEquals("90", result);
     }
 
     @Test
@@ -44,8 +44,8 @@ public class BowlingGameTest {
         BowlingGame bowlingGame = new BowlingGame();
 
         String knockout_num = "1,4,2,7,3,/,4,4,5,3,5,2,6,3,6,2,7,0,9,0";
-        int result = bowlingGame.scoring_rules(knockout_num);
-        assertEquals(84, result);
+        String result = bowlingGame.scoring_rules(knockout_num);
+        assertEquals("84", result);
     }
 
     @Test
@@ -53,8 +53,27 @@ public class BowlingGameTest {
         BowlingGame bowlingGame = new BowlingGame();
 
         String knockout_num = "1,4,2,7,3,/,4,4,5,3,5,2,6,3,6,2,7,0,X,5,4";
-        int result = bowlingGame.scoring_rules(knockout_num);
-        assertEquals(94, result);
+        String result = bowlingGame.scoring_rules(knockout_num);
+        assertEquals("94", result);
     }
+
+    @Test
+    public void should_return_score_num_when_ten_time_spare(){
+        BowlingGame bowlingGame = new BowlingGame();
+
+        String knockout_num = "1,4,2,7,3,/,4,4,5,3,5,2,6,3,6,2,7,0,8,/,4";
+        String result = bowlingGame.scoring_rules(knockout_num);
+        assertEquals("89", result);
+    }
+
+    @Test
+    public void should_throw_exception_when_given_number_is_negative(){
+        BowlingGame bowlingGame = new BowlingGame();
+
+        String knockout_num = "1,4,2,7,3,/,4,-1,5,3,5,2,6,3,6,2,7,0,8,/,4";
+
+        assertThrows(IllegalArgumentException.class,() -> bowlingGame.scoring_rules(knockout_num));
+    }
+    
 
 }
