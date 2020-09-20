@@ -102,6 +102,13 @@ public class BowlingGameTest {
         assertThrows(IllegalArgumentException.class,() -> bowlingGame.scoring_rules(knockout_num));
     }
 
- 
+    @Test
+    public void should_throw_exception_when_the_sum_of_two_throw_numbers_larger_than_10(){
+        BowlingGame bowlingGame = new BowlingGame();
+
+        String knockout_num = "1,4,2,7,3,/,4,9,5,3,5,2,6,3,6,2,7,0,8,/,4";
+        String result = bowlingGame.scoring_rules(knockout_num);
+        assertThrows(IllegalArgumentException.class,() -> bowlingGame.scoring_rules(knockout_num));
+    }
 
 }

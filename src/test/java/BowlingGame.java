@@ -6,7 +6,7 @@ public class BowlingGame {
 
         int score = 0;
         String[] knockoutArr = knockout_num.split(",");
-        if(knockoutArr.length<11 || knockoutArr.length>21){
+        if (knockoutArr.length < 11 || knockoutArr.length > 21) {
             throw new IllegalArgumentException("parameter error");
         }
         for (int j = 0; j < knockoutArr.length; j++) {
@@ -19,16 +19,19 @@ public class BowlingGame {
             int single_num = 0;
 
             if (knockoutArr[i].equals("X")) {
-                single_num = isstrike(knockoutArr[i]) + isstrike(knockoutArr[i + 1]) + isstrike(knockoutArr[i + 2]);
+                single_num = processInput(knockoutArr[i]) +processInput(knockoutArr[i + 1]) + processInput(knockoutArr[i + 2]);
                 score += single_num;
                 thrownum = thrownum - 1;
                 i++;
             } else if (knockoutArr[i + 1].equals("/")) {
-                single_num = isstrike(knockoutArr[i + 1]) + isstrike(knockoutArr[i + 2]);
+                single_num = processInput(knockoutArr[i + 1]) + processInput(knockoutArr[i + 2]);
                 score += single_num;
                 i = i + 2;
             } else {
-                single_num = isstrike(knockoutArr[i]) + isstrike(knockoutArr[i + 1]);
+                single_num = processInput(knockoutArr[i]) + processInput(knockoutArr[i + 1]);
+                if (single_num > 10) {
+                    throw new IllegalArgumentException("parameter error");
+                }
                 score += single_num;
                 i = i + 2;
             }
@@ -39,7 +42,7 @@ public class BowlingGame {
         return scoreString;
     }
 
-    public int isstrike(String single_num) {
+    public int processInput(String single_num) {
         if (single_num.equals("X")) {
             return 10;
         } else if (single_num.equals("/")) {
