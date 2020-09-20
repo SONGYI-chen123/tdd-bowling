@@ -6,6 +6,9 @@ public class BowlingGame {
 
         int score = 0;
         String[] knockoutArr = knockout_num.split(",");
+        if(knockoutArr.length<11){
+            throw new IllegalArgumentException("parameter error");
+        }
         for (int j = 0; j < knockoutArr.length; j++) {
             if (Integer.parseInt(knockoutArr[j]) < 0 || Integer.parseInt(knockoutArr[j]) > 10) {
                 throw new IllegalArgumentException("parameter error");
