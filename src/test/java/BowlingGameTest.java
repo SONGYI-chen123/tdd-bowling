@@ -47,6 +47,14 @@ public class BowlingGameTest {
         int result = bowlingGame.scoring_rules(knockout_num);
         assertEquals(84, result);
     }
-    
+
+    @Test
+    public void should_return_score_num_when_ten_time_strike(){
+        BowlingGame bowlingGame = new BowlingGame();
+
+        String knockout_num = "1,4,2,7,3,/,4,4,5,3,5,2,6,3,6,2,7,0,X,5,4";
+        int result = bowlingGame.scoring_rules(knockout_num);
+        assertEquals(94, result);
+    }
 
 }
