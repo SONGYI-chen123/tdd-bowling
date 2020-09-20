@@ -39,6 +39,14 @@ public class BowlingGameTest {
         assertEquals(90, result);
     }
 
+    @Test
+    public void should_return_score_num_when_ten_time_no_spare(){
+        BowlingGame bowlingGame = new BowlingGame();
+
+        String knockout_num = "1,4,2,7,3,/,4,4,5,3,5,2,6,3,6,2,7,0,9,0";
+        int result = bowlingGame.scoring_rules(knockout_num);
+        assertEquals(84, result);
+    }
     
 
 }
