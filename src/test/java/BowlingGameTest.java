@@ -93,6 +93,15 @@ public class BowlingGameTest {
         assertThrows(IllegalArgumentException.class,() -> bowlingGame.scoring_rules(knockout_num));
     }
 
-    
+    @Test
+    public void should_throw_exception_when_given_array_length_more_than_21(){
+        BowlingGame bowlingGame = new BowlingGame();
+
+        String knockout_num = "1,4,2,7,3,/,4,2,2,3,5,2,6,3,6,2,7,0,8,/,4,3,4";
+
+        assertThrows(IllegalArgumentException.class,() -> bowlingGame.scoring_rules(knockout_num));
+    }
+
+ 
 
 }

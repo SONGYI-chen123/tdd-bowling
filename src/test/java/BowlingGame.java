@@ -6,7 +6,7 @@ public class BowlingGame {
 
         int score = 0;
         String[] knockoutArr = knockout_num.split(",");
-        if(knockoutArr.length<11){
+        if(knockoutArr.length<11 || knockoutArr.length>21){
             throw new IllegalArgumentException("parameter error");
         }
         for (int j = 0; j < knockoutArr.length; j++) {
